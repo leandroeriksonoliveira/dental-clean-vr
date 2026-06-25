@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Comercial — Veltro Digital & Dental Clean</title>
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-card: #f1f5f9;
+      --navy: #0f172a;
+      --accent: #2563eb;
+      --cyan: #0891b2;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --radius: 6px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: #f1f5f9;
+      color: var(--text-main);
+      line-height: 1.45;
+      padding: 20px;
+    }
+
+    .print-actions {
+      max-width: 820px;
+      margin: 0 auto 10px;
+      text-align: right;
+    }
+
+    .print-btn {
+      background: var(--navy);
+      color: #ffffff;
+      border: 0;
+      border-radius: 6px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0b0f19 0%, #1e3a8a 100%);
+      padding: 25px 35px;
+      color: #ffffff;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .logo-text span { color: #06b6d4; }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 12px 35px;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item span {
+      display: block;
+      font-size: 9px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .meta-item strong {
+      font-size: 12px;
+      color: var(--navy);
+    }
+
+    .content { padding: 25px 35px; }
+
+    .section {
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--border);
+    }
+
+    .text-block {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .scope-box {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .scope-box h3 {
+      font-size: 12.5px;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .scope-box p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+
+    th {
+      background-color: var(--navy);
+      color: #ffffff;
+      padding: 8px 12px;
+      font-weight: 600;
+      text-align: left;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge-av {
+      background-color: rgba(34, 197, 94, 0.12);
+      color: #16a34a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .warning-box {
+      background-color: rgba(245, 158, 11, 0.06);
+      border-left: 3px solid #d97706;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      color: #92400e;
+      margin-top: 8px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .total-row td {
+      background-color: rgba(8, 145, 212, 0.08);
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    .total-row-mensal td {
+      background-color: rgba(37, 99, 219, 0.08);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .bullet-list { list-style: none; }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .bullet-list li::before {
+      content: "▪";
+      position: absolute;
+      left: 2px;
+      color: var(--cyan);
+    }
+
+    .prevent-split {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    .preview-section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .preview-frame {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      box-shadow: 0 10px 28px -12px rgba(15, 23, 42, 0.22);
+      margin-top: 8px;
+    }
+
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .preview-url {
+      flex: 1;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      font-size: 9px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .preview-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .preview-caption {
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .footer {
+      background-color: var(--bg-surface);
+      padding: 20px 35px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .signature-block { flex: 1; }
+
+    .signature-line {
+      width: 100%;
+      height: 1px;
+      background-color: var(--navy);
+      margin-bottom: 4px;
+      margin-top: 25px;
+    }
+
+    .signature-block p {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .signature-block strong {
+      color: var(--navy);
+      font-size: 11.5px;
+    }
+
+    .region-note {
+      background: rgba(37, 99, 219, 0.06);
+      border: 1px solid rgba(37, 99, 219, 0.15);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #1e40af;
+      margin-bottom: 8px;
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm 10mm; }
+      body { background-color: #ffffff; padding: 0; }
+      .print-actions { display: none; }
+      .container { border: none; box-shadow: none; max-width: 100%; }
+      .header {
+        background: #0b0f19 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .meta-grid, .scope-box, th, .total-row td, .total-row-mensal td, .footer, .badge-av, .warning-box, .preview-frame, .preview-toolbar, .region-note {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      th {
+        background-color: #0f172a !important;
+        color: #ffffff !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-actions">
+  <button class="print-btn" onclick="window.print()">Imprimir PDF</button>
+</div>
+
+<div class="container">
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-text">Veltro<span>Digital</span></div>
+    </div>
+    <h1>Proposta Técnica Comercial — Presença &amp; Blindagem Digital</h1>
+    <p>Adequação de infraestrutura web, conformidade regulatória ativa (CFO, CRO/RJ &amp; LGPD) e evolução contínua para o ecossistema digital.</p>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <span>Prestador de Serviços</span>
+      <strong>Veltro Digital</strong>
+    </div>
+    <div class="meta-item">
+      <span>Preparado para</span>
+      <strong>Dr. Joel Junior RT (CRO/RJ 19.478)</strong>
+    </div>
+    <div class="meta-item">
+      <span>Data de Emissão</span>
+      <strong>25 de Junho de 2026</strong>
+    </div>
+    <div class="meta-item">
+      <span>Validade</span>
+      <strong>30 dias</strong>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <div class="section-title">Objetivo Estratégico</div>
+      <p class="text-block">
+        Esta proposta estabelece os parâmetros técnicos, operacionais e financeiros para o <strong>desenvolvimento</strong>, refinamento, publicação estruturada, monitoramento em nuvem e blindagem ética do ecossistema digital da <strong>Dental Clean</strong>, clínica odontológica especializada em Ortodontia em Volta Redonda/RJ. O escopo garante uma aplicação de alta performance, tempo de resposta otimizado através de CDN global e total aderência às normativas brasileiras de proteção de dados, publicidade profissional em odontologia e diretrizes do CFO/CRO/RJ — incluindo identificação obrigatória do responsável técnico, disclaimers informativos e conformidade com a LGPD.
+      </p>
+    </div>
+
+    <div class="section preview-section">
+      <div class="section-title">Prévia do Produto — Layout Sugerido</div>
+      <p class="text-block">
+        Abaixo, uma visualização da página inicial já desenvolvida para a <strong>Dental Clean</strong>, demonstrando identidade visual alinhada ao Instagram da clínica, hierarquia de informações, identificação profissional (CRO/RJ 19.478 · EPAO 4.963) e experiência de conversão (agendamento via WhatsApp).
+      </p>
+      <div class="preview-frame">
+        <div class="preview-toolbar">
+          <span class="preview-dot"></span>
+          <span class="preview-dot"></span>
+          <span class="preview-dot"></span>
+          <span class="preview-url">dentalcleanvr.com.br</span>
+        </div>
+        <img
+          src="assets/proposta-preview-hero-site.png"
+          alt="Prévia do site Dental Clean — Dr. Joel Junior RT, Ortodontia em Volta Redonda/RJ"
+          class="preview-image"
+        />
+      </div>
+      <p class="preview-caption">Captura de referência — design responsivo, conformidade CFO/CRO/RJ, seção de diferenciais ortodônticos e integração com WhatsApp e Instagram.</p>
+      <p class="preview-caption" style="margin-top:4px;">
+        <strong>Prévia ao vivo:</strong>
+        <a href="https://dental-clean-vr.vercel.app" target="_blank" rel="noopener noreferrer">dental-clean-vr.vercel.app</a>
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">01. Escopo dos Serviços Inclusos</div>
+
+      <p class="text-block" style="color: var(--cyan); font-weight: 700; margin-bottom: 4px;">Fase 1: Desenvolvimento, Publicação e Blindagem (Investimento Único)</p>
+
+      <div class="scope-box">
+        <h3>⚡ Desenvolvimento e Otimização Estrutural</h3>
+        <p>Desenvolvimento completo do site institucional com seções de apresentação da clínica, especialidades odontológicas, diferenciais do tratamento ortodôntico, localização com mapa integrado, embed do Instagram e CTAs de agendamento — otimizado para velocidade, estabilidade e responsividade em dispositivos móveis.</p>
+      </div>
+
+      <div class="scope-box">
+        <h3>🌐 Gestão e Configuração de Domínio Próprio</h3>
+        <p>Registro, transição técnica e apontamento de DNS da URL definitiva da clínica (incluso por 1 ano, com taxa de renovação de R$ 100,00 a partir do segundo período), substituindo o subdomínio temporário de homologação.</p>
+      </div>
+
+      <div class="scope-box">
+        <h3>🛡️ Infraestrutura de Segurança e Criptografia</h3>
+        <p>Implementação ativa do protocolo HTTPS com emissão e renovação automática de certificado SSL, mitigando riscos de segurança e atendendo às obrigações do Marco Civil da Internet e LGPD.</p>
+      </div>
+
+      <div class="scope-box">
+        <h3>📜 Auditoria de Blindagem Regulatória &amp; Relatório Técnico</h3>
+        <p>Revisão sistemática de código e ativação da rota interna de proteção de dados (<code>/privacidade</code>) e banner de cookies em conformidade com a LGPD, o Código de Ética Odontológica, as resoluções do CFO sobre publicidade profissional e as diretrizes do CRO/RJ. Inclui ausência de conteúdos vedados (antes/depois, depoimentos de pacientes, divulgação de preços e promessas de resultado). <strong>O Relatório de Conformidade final será oficialmente homologado e entregue em conjunto com o deploy do site.</strong></p>
+      </div>
+
+      <p class="text-block" style="color: var(--accent); font-weight: 700; margin-top: 8px; margin-bottom: 4px;">Fase 2: Suporte, Evolução e Manutenção Especializada (Mensal)</p>
+
+      <div class="scope-box">
+        <h3>☁️ Hospedagem Cloud Profissional</h3>
+        <p>Alocação do site em servidores globais resilientes (Vercel) com monitoramento preventivo contra indisponibilidades, sem custos adicionais de servidores brutos ao cliente.</p>
+      </div>
+
+      <div class="scope-box">
+        <h3>📊 Atualização Anual da Auditoria de Conformidade</h3>
+        <p>Para assegurar a blindagem ética contínua contra novas resoluções ou alterações estruturais do CFO/CRO, <strong>a reemissão e execução do Relatório de Conformidade será realizada de forma preventiva uma vez ao ano, totalmente incluída no valor fixo da manutenção mensal.</strong></p>
+      </div>
+
+      <div class="scope-box">
+        <h3>🔄 Franquia de Atualizações Rápidas</h3>
+        <p>Garantia de atendimento para até 3 modificações simples mensais (ajustes em textos informativos de atuação, troca de imagens institucionais, atualização de horários ou novos avisos legais e disclaimers).</p>
+      </div>
+
+      <div class="scope-box">
+        <h3>⚙️ Monitoramento e Garantia Operacional</h3>
+        <p>Manutenção técnica proativa para assegurar a estabilidade e redirecionamento contínuo das rotas de conversão do site, como links de WhatsApp, Instagram e canais de contato institucional.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">02. Seleção de Domínio Profissional</div>
+      <p class="text-block">Para a implementação e publicação oficial do projeto, foram mapeados e validados os seguintes domínios para a escolha do cliente:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Endereço Mapeado</th>
+              <th>Status do Registro</th>
+              <th>Análise Técnica / Extensão Profissional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>dentalcleanvr.com.br</strong></td>
+              <td><span class="badge-av">Disponível</span></td>
+              <td>Formato direto e memorável, alinhado ao perfil @dentalcleanvr no Instagram.</td>
+            </tr>
+            <tr>
+              <td><strong>dentalclean.com.br</strong></td>
+              <td><span class="badge-av">Disponível</span></td>
+              <td>Nome da marca em formato curto, ideal para cartões e materiais impressos.</td>
+            </tr>
+            <tr>
+              <td><strong>drjoeljunior.com.br</strong></td>
+              <td><span class="badge-av">Disponível</span></td>
+              <td>Alta clareza semântica para buscas orgânicas pelo nome do responsável técnico.</td>
+            </tr>
+            <tr>
+              <td><strong>dentalcleanvoltaredonda.com.br</strong></td>
+              <td><span class="badge-av">Disponível</span></td>
+              <td>Combinação explícita da marca e da localização geográfica da clínica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning-box">
+        <strong>⚠️ Nota de Disponibilidade Crítica:</strong><br>
+        A disponibilidade de domínios na internet é dinâmica e regida por ordem de prioridade de registro. Caso a contratação não seja imediata, estes endereços podem ser registrados por terceiros, ficando permanentemente indisponíveis sob estas exatas extensões.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">03. Cronograma Financeiro &amp; Investimento</div>
+
+      <div class="region-note">
+        <strong>📍 Tabela Regional — Volta Redonda/RJ:</strong> Valores ajustados para o mercado do interior fluminense, considerando o porte da clínica, a complexidade regulatória odontológica (CFO/CRO) e o escopo técnico equivalente às propostas Veltro Digital para profissionais liberais na região.
+      </div>
+
+      <p class="text-block">Valores comerciais estipulados para a completa execução e cobertura das fases do projeto:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Fase de Atuação</th>
+              <th>Entregáveis e Regime de Trabalho</th>
+              <th>Investimento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="total-row">
+              <td><strong>Fase 1 (Taxa Única)</strong></td>
+              <td>Setup inicial, desenvolvimento, otimização de código, SSL, apontamento de domínio, blindagem LGPD/CFO/CRO/RJ e entrega do Relatório de Conformidade Inicial.</td>
+              <td>R$ 5.000,00</td>
+            </tr>
+            <tr class="total-row-mensal">
+              <td><strong>Fase 2 (Mensal)</strong></td>
+              <td>Hospedagem cloud, suporte, franquia de alterações e auditoria regulatória do relatório realizada 1x ao ano (sem custo adicional).</td>
+              <td>R$ 300,00 / mês</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">04. Delimitações e Exclusões (Fora de Escopo)</div>
+      <p class="text-block">Para assegurar transparência, os itens abaixo não integram o escopo técnico regular desta proposta, podendo ser orçados individualmente como adicionais se requeridos:</p>
+
+      <ul class="bullet-list">
+        <li><strong>Criação de Identidade Visual e Conteúdo:</strong> Redação de artigos e materiais educativos para blog, criação de logotipos, logomarcas ou materiais gráficos institucionais.</li>
+        <li><strong>Gestão de Tráfego e Mídia Paga:</strong> Planejamento, compra de mídia ou acompanhamento de campanhas de anúncios patrocinados (Google Ads, Meta Ads, etc.).</li>
+        <li><strong>Reformulações Complexas de Layout:</strong> Alterações estruturais profundas de design após aprovação da arquitetura inicial, bem como desenvolvimento de landing pages extras complexas.</li>
+        <li><strong>Licenciamento de E-mails Corporativos:</strong> Custos de aquisição de licenças para caixas de e-mail profissionais (Google Workspace, Microsoft 365).</li>
+        <li><strong>Assessoria Clínica de Redação Interna:</strong> A responsabilidade técnica e civil sobre a base textual de conteúdo clínico compete ao cirurgião-dentista; a Veltro Digital responde pela engenharia, implementação dos fluxos e conformidade técnica do site.</li>
+        <li><strong>Produção de Fotos e Vídeos:</strong> Sessões fotográficas ou produção audiovisual para o site (utiliza-se material fornecido pelo cliente ou já publicado nas redes sociais).</li>
+      </ul>
+    </div>
+
+    <div class="prevent-split">
+      <div class="section" style="margin-bottom: 25px;">
+        <div class="section-title">05. Cronograma Estimado de Implementação</div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Etapa Técnica do Projeto</th>
+                <th>Prazo Estimado de Execução</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Configuração de Domínio &amp; Infraestrutura Cloud</td>
+                <td>Até 3 dias úteis após o aceite.</td>
+              </tr>
+              <tr>
+                <td>Revisão do Código &amp; Aplicação dos Disclaimers CFO/CRO/RJ</td>
+                <td>Até 5 dias úteis.</td>
+              </tr>
+              <tr>
+                <td>Blindagem Regulatória LGPD &amp; Emissão do Relatório Final</td>
+                <td>Até 4 dias úteis.</td>
+              </tr>
+              <tr style="font-weight: bold; color: var(--cyan); background-color: rgba(8, 145, 212, 0.05);">
+                <td>Prazo Total de Conclusão e Deploy (Fase 1)</td>
+                <td>12 dias úteis.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prevent-split">
+    <div class="footer">
+      <div class="signature-block">
+        <div class="signature-line"></div>
+        <p>Pelo Prestador:</p>
+        <strong>Veltro Digital</strong>
+        <p style="margin-top:4px;">veltrodigital.com.br</p>
+      </div>
+
+      <div class="signature-block">
+        <div class="signature-line"></div>
+        <p>Pelo Contratante:</p>
+        <strong>Dental Clean — Dr. Joel Junior RT</strong>
+        <p style="margin-top:4px;">CRO/RJ 19.478 · EPAO 4.963</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

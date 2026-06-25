@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
+import PoweredByVeltro from "@/components/PoweredByVeltro";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -83,6 +84,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <PoweredByVeltro className="py-4 bg-[#0F172A] border-t border-white/5" variant="dark" />
         <WhatsAppButton />
         <CookieBanner />
       </body>
