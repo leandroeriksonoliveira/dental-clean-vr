@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig, whatsappUrl } from "@/lib/site";
 import { MapPin, Phone, Clock, ShieldCheck, Share2 } from "lucide-react";
 
 export default function Footer() {
@@ -95,7 +96,7 @@ export default function Footer() {
             </ul>
             <div className="mt-6">
               <a
-                href="https://wa.me/5524988171939?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20na%20Dental%20Clean."
+                href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors"

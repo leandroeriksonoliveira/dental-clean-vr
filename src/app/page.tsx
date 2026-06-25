@@ -17,7 +17,8 @@ import {
   ClipboardList,
   HeartHandshake,
 } from "lucide-react";
-import InstagramEmbed from "@/components/InstagramEmbed";
+import InstagramProfileEmbed from "@/components/InstagramEmbed";
+import { siteConfig, whatsappUrl } from "@/lib/site";
 
 const services = [
   {
@@ -135,7 +136,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="https://wa.me/5524988171939?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20na%20Dental%20Clean."
+                href={whatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-green-900/30"
@@ -363,7 +364,7 @@ export default function Home() {
               </p>
             </div>
             <a
-              href="https://wa.me/5524988171939?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação%20ortodôntica%20na%20Dental%20Clean."
+              href={whatsappUrl("Olá, gostaria de agendar uma avaliação ortodôntica na Dental Clean.")}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg"
@@ -452,10 +453,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 items-center">
             {/* Instagram embed */}
             <div className="flex justify-center">
-              <InstagramEmbed
-                postUrl="https://www.instagram.com/reel/C6Jx0_tRhBR/"
-                caption="Dr. Joel Junior RT no Instagram @dentalcleanvr"
-              />
+              <InstagramProfileEmbed username="dentalcleanvr" />
             </div>
 
             {/* Card de CTA para Instagram */}
@@ -585,7 +583,7 @@ export default function Home() {
               </div>
               <div className="min-h-[320px] bg-gray-100">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.0!2d-44.0837!3d-22.5234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDMxJzI0LjIiUyA0NMKwMDUnMDEuMyJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                  src={`https://maps.google.com/maps?q=${siteConfig.address.mapsQuery}&hl=pt-BR&z=16&output=embed`}
                   width="100%"
                   height="320"
                   style={{ border: 0 }}
@@ -627,7 +625,7 @@ export default function Home() {
                 bg: "bg-green-600",
                 title: "WhatsApp",
                 sub: "(24) 98817-1939",
-                href: "https://wa.me/5524988171939?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20na%20Dental%20Clean.",
+                href: whatsappUrl(),
                 cta: "Enviar mensagem",
               },
               {
