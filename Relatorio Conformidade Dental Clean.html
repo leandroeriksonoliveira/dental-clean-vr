@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Relatório de Conformidade Final — Dental Clean (Rev. 1.0)</title>
+  <style>
+    :root {
+      --bg:#070a14; --surf:#0c1020; --surf2:#111628; --surf3:#161d32;
+      --border:#1c2340; --border2:#232c4c;
+      --accent:#0ea5e9; --accent-l:#38bdf8; --navy:#1b3a6b; --teal:#14b8a6;
+      --ok:#22c55e; --warn:#f59e0b; --fail:#ef4444; --purple:#a78bfa;
+      --text:#dce5f5; --text2:#9aaac8; --muted:#556080;
+      --r:14px; --r-sm:8px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:28px 20px 90px;max-width:1120px;margin:0 auto}
+
+    .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+    .pill{font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;letter-spacing:.7px;text-transform:uppercase}
+    .pill-navy {background:rgba(27,58,107,.2);color:var(--accent-l);border:1px solid rgba(14,165,233,.3)}
+    .pill-blue {background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+    .pill-teal {background:rgba(20,184,166,.15);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+    .pills-row{display:flex;gap:7px;flex-wrap:wrap}
+    .topbar-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .btn-print{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--navy));color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 4px 18px rgba(14,165,233,.25)}
+    .btn-print:hover{opacity:.9;transform:translateY(-1px)}
+    .btn-print svg{width:18px;height:18px}
+
+    .rev-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:8px 16px;font-size:12.5px;color:var(--ok);margin-bottom:20px}
+    .rev-badge strong{font-weight:800}
+
+    .header{background:linear-gradient(135deg,#0a0f22 0%,#1b3a6b 45%,#0a0f22 100%);border:1px solid var(--border2);border-radius:var(--r);padding:42px 38px;margin-bottom:22px;position:relative;overflow:hidden}
+    .header h1{font-size:27px;font-weight:900;color:#fff;margin-bottom:7px;letter-spacing:-.4px}
+    .header h1 em{color:var(--accent-l);font-style:normal}
+    .header-sub{font-size:13.5px;color:var(--text2);margin-bottom:30px;line-height:1.65}
+    .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+    .meta-box{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 16px}
+    .meta-box label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+    .meta-box span{font-size:13px;font-weight:600;color:var(--text);word-break:break-all}
+    .meta-box span.accent{color:var(--accent);font-size:12px}
+    .rev-tag{background:rgba(34,197,94,.15);color:var(--ok);border:1px solid rgba(34,197,94,.4);font-size:11px;padding:2px 8px;border-radius:6px;font-weight:700}
+
+    .scoreboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:11px;margin-bottom:22px}
+    .sc{background:var(--surf);border:1px solid var(--border2);border-radius:var(--r);padding:22px 12px;text-align:center;position:relative;overflow:hidden}
+    .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .sc.total::before{background:linear-gradient(90deg,var(--accent),var(--navy))}
+    .sc.ok::before{background:var(--ok)} .sc.warn::before{background:var(--warn)} .sc.fail::before{background:var(--fail)}
+    .sc-n{font-size:44px;font-weight:900;line-height:1;margin-bottom:6px}
+    .sc.total .sc-n{color:var(--accent-l)} .sc.ok .sc-n{color:var(--ok)} .sc.warn .sc-n{color:var(--warn)} .sc.fail .sc-n{color:var(--fail)}
+    .sc-l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px}
+
+    .veredito{border-radius:var(--r);padding:24px 28px;margin-bottom:26px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .veredito.green{background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(34,197,94,.04));border:1px solid rgba(34,197,94,.32)}
+    .v-ico{font-size:50px}
+    .v-txt h2{font-size:21px;font-weight:900;margin-bottom:7px;color:var(--ok)}
+    .v-txt p{font-size:13.5px;color:var(--text2);line-height:1.7}
+
+    .fixes-box{background:var(--surf);border:1px solid rgba(14,165,233,.25);border-radius:var(--r);padding:22px;margin-bottom:22px}
+    .fixes-box h3{font-size:15px;font-weight:800;color:var(--accent-l);margin-bottom:14px}
+    .fixes-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .fixes-list li{font-size:13px;color:var(--text2);line-height:1.65;padding-left:20px;position:relative}
+    .fixes-list li::before{content:'✓';position:absolute;left:0;color:var(--ok);font-weight:800}
+    .fixes-list li strong{color:var(--text)}
+
+    .section{margin-bottom:22px}
+    .sec-hdr{display:flex;align-items:center;gap:14px;padding:16px 22px;background:var(--surf2);border:1px solid var(--border2);border-radius:var(--r) var(--r) 0 0}
+    .snum{width:30px;height:30px;border-radius:50%;background:rgba(14,165,233,.14);color:var(--accent-l);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0}
+    .stitle{font-size:15px;font-weight:700;flex:1}
+    .sec-body{border:1px solid var(--border2);border-top:none;border-radius:0 0 var(--r) var(--r);overflow:hidden}
+
+    .item{display:grid;grid-template-columns:24px 1fr auto;gap:16px;padding:18px 22px;border-bottom:1px solid rgba(28,35,64,.8);background:var(--surf);align-items:start}
+    .item:last-child{border-bottom:none}
+    .ititle{font-size:14px;font-weight:700;color:#e5ecfb}
+    .idesc{font-size:12.5px;color:var(--text2);line-height:1.65;margin-top:4px}
+    .ibadge{font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap}
+    .b-ok{background:rgba(34,197,94,.12);color:var(--ok);border:1px solid rgba(34,197,94,.25)}
+    .b-warn{background:rgba(245,158,11,.12);color:var(--warn);border:1px solid rgba(245,158,11,.25)}
+    .b-na{background:rgba(86,98,130,.12);color:var(--muted);border:1px solid rgba(86,98,130,.25)}
+
+    .action-plan{background:var(--surf);border:1px solid var(--border2);border-radius:var(--r);padding:22px;margin-top:14px}
+    .action-plan h3{font-size:15px;font-weight:800;color:var(--accent-l);margin-bottom:14px}
+    .action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .action-card{background:var(--surf2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px}
+    .action-card h4{font-size:12px;color:var(--accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+    .action-card ul{list-style:none;font-size:12px;color:var(--text2);line-height:1.6}
+    .action-card li{padding-left:14px;position:relative;margin-bottom:4px}
+    .action-card li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+
+    .footer{text-align:center;font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:22px;margin-top:30px}
+    .legal-note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:10px}
+
+    @media print {
+      body{background:#fff;color:#111;padding:16px}
+      .btn-print{display:none!important}
+      .header,.scoreboard,.veredito,.section,.fixes-box,.action-plan{break-inside:avoid-page}
+      .header{background:#f5f6fa;border:1px solid #ddd}
+      .header h1{color:#111}
+      .header-sub,.meta-box span,.idesc,.v-txt p,.fixes-list li{color:#333}
+      .sc,.item,.sec-hdr,.sec-body,.fixes-box,.action-plan{background:#fff;border-color:#ddd}
+      .ititle{color:#111}
+      .veredito.green{background:#f0fdf4;border-color:#86efac}
+      .v-txt h2{color:#15803d}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="pills-row">
+    <span class="pill pill-navy">🦷 CFO / CRO/RJ</span>
+    <span class="pill pill-blue">🔐 LGPD — Lei 13.709/18</span>
+    <span class="pill pill-teal">📋 Res. CFM 2.336/2023 (referência)</span>
+    <span class="pill pill-teal">🌐 Selo de Conformidade</span>
+  </div>
+  <div class="topbar-actions">
+    <span style="font-size:12px;color:var(--muted);">📅 25/06/2026</span>
+    <button type="button" class="btn-print" onclick="window.print()" title="Imprimir ou salvar como PDF">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Imprimir PDF
+    </button>
+  </div>
+</div>
+
+<div class="rev-badge">
+  🛡️ <strong>Revisão Inicial (v1.0)</strong> — Auditoria técnica, ética e jurídica do site institucional Dental Clean após deploy em produção.
+</div>
+
+<div class="header">
+  <h1>Relatório de Conformidade — <em>Dental Clean</em></h1>
+  <p class="header-sub">
+    Auditoria remota do portal institucional da clínica odontológica Dental Clean, com foco em publicidade profissional odontológica (CFO/CRO/RJ), proteção de dados (LGPD) e boas práticas de comunicação em saúde. Metodologia baseada no checklist de sites de saúde e normativas aplicáveis ao cirurgião-dentista.
+  </p>
+  <div class="meta-grid">
+    <div class="meta-box"><label>Estabelecimento</label><span>Dental Clean — Volta Redonda/RJ</span></div>
+    <div class="meta-box"><label>URL Auditada</label><span class="accent">dental-clean-vr.vercel.app</span></div>
+    <div class="meta-box"><label>Responsável Técnico</label><span>Dr. Joel Junior RT (CRO/RJ 19.478 · EPAO 4.963)</span></div>
+    <div class="meta-box"><label>Perfil</label><span>🦷 Clínica Odontológica — Ortodontia</span></div>
+    <div class="meta-box"><label>Local</label><span>Retiro — Volta Redonda/RJ</span></div>
+    <div class="meta-box"><label>Homologação</label><span><span class="rev-tag">96% APROVADO</span></span></div>
+  </div>
+</div>
+
+<div class="scoreboard">
+  <div class="sc total"><div class="sc-n">28</div><div class="sc-l">Critérios Analisados</div></div>
+  <div class="sc ok"><div class="sc-n">26</div><div class="sc-l">✅ Conformes</div></div>
+  <div class="sc warn"><div class="sc-n">2</div><div class="sc-l">⚠️ Atenção</div></div>
+  <div class="sc fail"><div class="sc-n">0</div><div class="sc-l">❌ Não Conforme</div></div>
+</div>
+
+<div class="veredito green">
+  <div class="v-ico">🟢</div>
+  <div class="v-txt">
+    <h2>VEREDITO: APROVADO COM RESSALVAS MÍNIMAS (EM CONFORMIDADE)</h2>
+    <p>
+      O site cumpre os requisitos essenciais de identificação profissional (CRO/RJ e EPAO), ausência de conteúdos vedados em publicidade odontológica, disclaimers informativos, Política de Privacidade em <code>/privacidade</code>, banner de cookies e HTTPS ativo. Índice de conformidade: <strong>96%</strong> (26/28 conformes, 2 itens de atenção não bloqueadores). Recomenda-se migração para domínio próprio e monitoramento do embed do Instagram.
+    </p>
+  </div>
+</div>
+
+<div class="fixes-box">
+  <h3>✅ Implementações de Conformidade Identificadas</h3>
+  <ul class="fixes-list">
+    <li><strong>CRO/RJ 19.478 · EPAO 4.963</strong> — Identificação do Dr. Joel Junior RT visível no hero, seção Sobre, rodapé e metadados do site.</li>
+    <li><strong>Disclaimers informativos</strong> — Aviso de que o conteúdo não substitui consulta presencial no rodapé, seção de serviços e contato.</li>
+    <li><strong>Política de Privacidade (LGPD)</strong> — Página completa em <code>/privacidade</code> com bases legais, direitos do titular e contato do responsável.</li>
+    <li><strong>Banner de cookies</strong> — Componente com opções "Aceitar todos" e "Somente essenciais", com link para a política.</li>
+    <li><strong>Ausência de conteúdos proibidos</strong> — Sem antes/depois, depoimentos de pacientes, preços, promessas de cura ou contagem de pacientes como marketing.</li>
+    <li><strong>HTTPS</strong> — Certificado SSL ativo via Vercel em produção.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">1</div><div class="stitle">🪪 Identificação Profissional Obrigatória</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">Nome completo do profissional visível</div><div class="idesc">Dr. Joel Junior RT exibido no hero, seção Sobre, rodapé e card de credenciais — sem abreviações indevidas.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">CRO/RJ com UF e titulação profissional</div><div class="idesc">CRO/RJ 19.478 exibido em múltiplos pontos do site, conforme exigências do CRO/RJ para publicidade odontológica.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Especialidade com registro EPAO</div><div class="idesc">"Especialista em Ortodontia" acompanhado de EPAO 4.963 — registro de especialização reconhecido pelo CFO.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Formação e experiência apresentadas de forma objetiva</div><div class="idesc">Menciona 30+ anos de atuação e 25+ anos na especialidade sem superlativos ou promessas de resultado clínico.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">2</div><div class="stitle">🚫 Conteúdos Expressamente Proibidos</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de fotos/vídeos de antes e depois</div><div class="idesc">Nenhuma imagem comparativa de resultados clínicos identificada no site.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de depoimentos de pacientes</div><div class="idesc">Sem avaliações, estrelas, vídeos ou relatos nominativos de pacientes.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de promessas de resultados ou cura</div><div class="idesc">Linguagem informativa/educativa. Termos como "Pontualidade garantida" referem-se ao horário de atendimento, não a resultados clínicos.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de divulgação de preços</div><div class="idesc">Nenhuma tabela de valores, pacotes ou condições comerciais publicadas.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de contagem de pacientes/procedimentos como marketing</div><div class="idesc">Estatística de posts no Instagram (483) é referência à rede social, não contagem de pacientes atendidos.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Ausência de apelo à vulnerabilidade emocional</div><div class="idesc">CTAs institucionais e informativos, sem linguagem sensacionalista ou exploratória.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">3</div><div class="stitle">✅ Conteúdos Obrigatórios e Recomendados</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">Disclaimer — site não substitui consulta presencial</div><div class="idesc">Presente no rodapé, seção de serviços (aviso informativo) e seção de contato.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Informações de contato claras</div><div class="idesc">Endereço completo, telefones (24) 3346-3474 e (24) 98817-1939, horários e mapa Google Maps integrado.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Conteúdo educativo com linguagem técnica neutra</div><div class="idesc">Descrições de serviços odontológicos com aviso de caráter exclusivamente educativo.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>➖</div><div><div class="ititle">Formulário de contato com consentimento LGPD</div><div class="idesc">N/A — contato via WhatsApp e telefone externos, sem formulário embutido coletando dados no site.</div></div><span class="ibadge b-na">N/A</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">4</div><div class="stitle">🏥 Clínica e Estabelecimento</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">Responsável técnico identificado</div><div class="idesc">Dr. Joel Junior RT com CRO/RJ e EPAO visíveis como responsável técnico da clínica.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Serviços descritos sem técnicas "exclusivas" ou sensacionalistas</div><div class="idesc">Ortodontia, clareamento, facetas, prótese protocolo e odontopediatria descritos de forma objetiva.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>⚠️</div><div><div class="ititle">Domínio próprio vs. subdomínio temporário</div><div class="idesc">Site publicado em dental-clean-vr.vercel.app. Recomenda-se migração para domínio próprio (ex.: dentalcleanvr.com.br) antes da divulgação ampla.</div></div><span class="ibadge b-warn">ATENÇÃO</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">5</div><div class="stitle">🔒 LGPD, Sigilo e Segurança</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">HTTPS ativo</div><div class="idesc">Certificado SSL válido em produção (Vercel).</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Política de Privacidade detalhada e acessível</div><div class="idesc">Página /privacidade com bases legais, tipos de dados, cookies, direitos Art. 18 e contato do responsável.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Banner de cookies com opção de recusar</div><div class="idesc">CookieBanner com "Aceitar todos" e "Somente essenciais".</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Sem coleta de dados de saúde via formulários digitais</div><div class="idesc">Política declara explicitamente que dados sensíveis de saúde não são coletados online.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>⚠️</div><div><div class="ititle">Embed do Instagram (terceiros)</div><div class="idesc">Iframe do perfil @dentalcleanvr pode carregar cookies de terceiros. Recomenda-se carregar embed somente após consentimento ou substituir por link estático se necessário.</div></div><span class="ibadge b-warn">ATENÇÃO</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-hdr"><div class="snum">6</div><div class="stitle">🔍 Auditoria de Linguagem e Imagens</div></div>
+  <div class="sec-body">
+    <div class="item"><div>✅</div><div><div class="ititle">Textos sem termos curativos absolutos</div><div class="idesc">Revisão sem ocorrências de "cura garantida", "100% eficaz" ou equivalentes em contexto clínico.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Imagens profissionais sem indução a resultados</div><div class="idesc">Foto do cirurgião-dentista em ambiente clínico — não constitui antes/depois nem foto de paciente.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+    <div class="item"><div>✅</div><div><div class="ititle">Linguagem acessível e informativa</div><div class="idesc">Descrições de tratamentos em linguagem clara, com avisos de caráter educativo.</div></div><span class="ibadge b-ok">CONFORME</span></div>
+  </div>
+</div>
+
+<div class="action-plan">
+  <h3>📋 Plano de Ação Recomendado</h3>
+  <div class="action-grid">
+    <div class="action-card">
+      <h4>7 dias</h4>
+      <ul>
+        <li>Registrar domínio dentalcleanvr.com.br</li>
+        <li>Apontar DNS para Vercel</li>
+        <li>Atualizar metadataBase no site</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <h4>15 dias</h4>
+      <ul>
+        <li>Revisar embed Instagram pós-consentimento de cookies</li>
+        <li>Validar CRO/RJ 19.478 no portal do conselho</li>
+      </ul>
+    </div>
+    <div class="action-card">
+      <h4>30 dias</h4>
+      <ul>
+        <li>Reauditoria anual de conformidade CFO/CRO</li>
+        <li>Atualizar relatório após domínio definitivo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p><strong>Relatório gerado por Veltro Digital</strong> — veltrodigital.com.br</p>
+  <p class="legal-note">
+    ⚠️ Este relatório é orientativo e não substitui parecer jurídico ou validação formal pelo CRO/RJ ou CFO.
+    Bases legais: Código de Ética Odontológica · Resoluções CFO · LGPD Lei 13.709/2018 · Res. CFM 2.336/2023 (referência para publicidade em saúde).
+    Auditoria remota realizada em 25/06/2026 sobre dental-clean-vr.vercel.app.
+  </p>
+</div>
+
+</body>
+</html>
