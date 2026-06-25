@@ -18,52 +18,8 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import InstagramProfileEmbed from "@/components/InstagramEmbed";
+import { ServicesSection } from "@/components/ServicesSection";
 import { siteConfig, whatsappUrl } from "@/lib/site";
-
-const services = [
-  {
-    icon: "🦷",
-    title: "Ortodontia",
-    desc: "Especialidade principal da clínica. Correção de dentes e mordida com aparelhos fixos, removíveis e alinhadores modernos.",
-    tag: "Especialidade",
-    image: null,
-  },
-  {
-    icon: "✨",
-    title: "Clareamento Dental",
-    desc: "Procedimento clínico supervisionado para clarear os dentes com segurança, utilizando géis e técnicas aprovadas.",
-    tag: "Estética",
-    image: null,
-  },
-  {
-    icon: "🔬",
-    title: "Facetas em Resina",
-    desc: "Restaurações diretas em resina composta que melhoram a forma, cor e harmonia do sorriso.",
-    tag: "Estética",
-    image: null,
-  },
-  {
-    icon: "🦴",
-    title: "Prótese Protocolo",
-    desc: "Reabilitação oral sobre implantes osseointegrados para pacientes que perderam todos os dentes, com planejamento individualizado.",
-    tag: "Reabilitação",
-    image: "/images/protese-protocolo.png",
-  },
-  {
-    icon: "😴",
-    title: "Aparelho para Ronco e Apneia",
-    desc: "Dispositivo intraoral para o tratamento do ronco e da apneia obstrutiva do sono leve a moderada, conforme indicação médica.",
-    tag: "Saúde do Sono",
-    image: null,
-  },
-  {
-    icon: "👶",
-    title: "Odontopediatria",
-    desc: "Atendimento odontológico especializado para crianças, com técnicas de humanização e ambiente acolhedor.",
-    tag: "Infantil",
-    image: null,
-  },
-];
 
 const differentials = [
   {
@@ -378,61 +334,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ====== SERVIÇOS ====== */}
-      <section id="servicos" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="text-[#0EA5E9] text-sm font-semibold uppercase tracking-widest">
-              O que oferecemos
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1B3A6B] mt-2 mb-4">
-              Especialidades e Serviços
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Realizamos tratamentos odontológicos com técnicas atualizadas e ética profissional,
-              sempre seguindo as diretrizes do CRO/RJ e do Conselho Federal de Odontologia.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover"
-              >
-                {s.image && (
-                  <div className="relative h-44 w-full overflow-hidden">
-                    <Image
-                      src={s.image}
-                      alt={`${s.title} — Dental Clean, Volta Redonda/RJ`}
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                )}
-                <div className="p-6">
-                  <div className="text-3xl mb-3">{s.icon}</div>
-                  <div className="inline-block bg-blue-50 text-[#1B3A6B] text-xs font-semibold px-2 py-0.5 rounded-md mb-2">
-                    {s.tag}
-                  </div>
-                  <h3 className="font-bold text-[#1B3A6B] text-lg mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-3">
-            <span className="text-amber-500 text-xl shrink-0">ℹ️</span>
-            <p className="text-amber-800 text-sm leading-relaxed">
-              <strong>Aviso informativo:</strong> As descrições acima têm caráter exclusivamente educativo.
-              O plano de tratamento adequado é determinado após avaliação clínica individualizada pelo
-              cirurgião-dentista. Não caracteriza indicação ou promessa de resultado.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
 
       {/* ====== INSTAGRAM / REDES SOCIAIS ====== */}
       <section className="py-20 section-bg-alt">
